@@ -2,6 +2,7 @@ const { User, Profile } = require('../models')
 const jwt = require('jsonwebtoken')
 
 async function signup(req, res) {
+  console.log("signup triggered")
   try {
     const user = await User.findOne({ where: { email: req.body.email } })
     if (user) {
