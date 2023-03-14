@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      
+      worldNumber: {
+        type: Sequelize.INTEGER
+      },
       description: {
         type: Sequelize.TEXT
       },

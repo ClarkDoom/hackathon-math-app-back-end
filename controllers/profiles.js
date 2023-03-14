@@ -1,9 +1,13 @@
-const { Profile } = require('../models')
+const { Profile, Progress } = require('../models')
 const cloudinary = require('cloudinary').v2
 
 async function index(req, res) {
   try {
-    const profiles = await Profile.findAll()
+    const profiles = await Profile.findAll(
+      {
+        include: [{ model: Progress, as: "Progress Records"},]
+      }
+    )
     res.json(profiles)
   } catch (error) {
     console.log(error)
@@ -30,7 +34,9 @@ async function addPhoto(req, res) {
 
 async function show(req, res) {
   try {
-    const profile = await Profile.findByPk(req.params.profileId)
+    const profile = await Profile.findByPk(req.params.profileId, {
+      include: [{ model: Progress, as: "Progress Records"},]
+    })
     res.status(200).json(profile)
   } catch (error) {
     console.log(error)

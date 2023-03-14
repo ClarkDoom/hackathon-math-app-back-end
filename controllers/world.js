@@ -1,4 +1,4 @@
-const { World } = require('../models')
+const { World, Level } = require('../models')
 
 
 async function create(req, res) {
@@ -33,7 +33,11 @@ async function deleteWorld(req, res) {
 
 async function index(req, res) {
   try {
-    const worlds = await World.findAll()
+    const worlds = await World.findAll(
+      {
+        include: [{ model: Level, as: "Levels" },]
+      }
+    )
     res.json(worlds)
   } catch (error) {
     console.log(error)
