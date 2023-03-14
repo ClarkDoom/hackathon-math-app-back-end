@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      descripton: {
+      description: {
         type: Sequelize.TEXT
       },
       createdAt: {

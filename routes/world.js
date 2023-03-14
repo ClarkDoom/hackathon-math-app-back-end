@@ -9,6 +9,10 @@ const { decodeUserFromToken, checkAuth } = middleware
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
+router.get('/', checkAuth, worldCtrl.index)
+router.post('/', checkAuth, worldCtrl.create)
+router.patch('/:worldId/update', checkAuth, worldCtrl.update)
+router.delete('/:worldId/delete', checkAuth, worldCtrl.deleteWorld)
 
 
 module.exports = router

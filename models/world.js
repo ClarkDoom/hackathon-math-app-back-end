@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   World.init({
-    descripton: DataTypes.TEXT
+    description: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'World',
