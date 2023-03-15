@@ -33,7 +33,9 @@ async function deleteProgress(req, res) {
 
 async function index(req, res) {
   try {
-    const progresses = await Progress.findAll()
+    const progresses = await Progress.findAll({
+      //include world using foreigh key of level
+    })
     res.json(progresses)
   } catch (error) {
     console.log(error)
