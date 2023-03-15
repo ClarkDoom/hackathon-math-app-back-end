@@ -18,7 +18,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     userName: DataTypes.STRING,
-    photo: DataTypes.STRING,
+    gradeLevel: DataTypes.INTEGER,
+    photo: {
+      type: DataTypes.STRING,
+      validate: {
+        min: 0,
+        max: 6
+      }
+    },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
