@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       }),
       Level.hasMany(models.Progress, {
         foreignKey: "level",
-        as: 'Progress Records'
+        as: 'progressRecords'
       })
     }
   }

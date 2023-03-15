@@ -1,11 +1,12 @@
 const { Profile, Progress, World } = require('../models')
 const cloudinary = require('cloudinary').v2
+var sequelize = require('sequelize');
 
 async function index(req, res) {
   try {
     const profiles = await Profile.findAll(
       {
-        include: [{ model: Progress, as: "Progress Records"},]
+        include: [{ model: Progress, as: "progressRecords" },]
       }
     )
     res.json(profiles)
@@ -20,7 +21,7 @@ async function addPhoto(req, res) {
     const imageFile = req.files.photo.path
     const profile = await Profile.findByPk(req.params.id)
     const image = await cloudinary.uploader.upload(
-      imageFile, 
+      imageFile,
       { tags: `${req.user.email}` }
     )
     profile.photo = image.url
@@ -35,7 +36,9 @@ async function addPhoto(req, res) {
 async function show(req, res) {
   try {
     const profile = await Profile.findByPk(req.params.profileId, {
-      include: [{ model: Progress, as: "Progress Records", },]
+      include: [{
+        model: Progress, as: "progressRecords"
+      },],
     })
     console.log("ALERT ALERT ALERT profile", req.params.profileId)
     res.status(200).json(profile)

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       Profile.belongsTo(models.User, { foreignKey: 'userId' }),
       Profile.hasMany(models.Progress, {
         foreignKey: "profile",
-        as: 'Progress Records'
+        as: 'progressRecords'
       })
     }
   }

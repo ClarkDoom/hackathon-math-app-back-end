@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     level: DataTypes.INTEGER,
     world: DataTypes.INTEGER,
     levelCompleted: DataTypes.BOOLEAN,
-    exercisesCompleted: DataTypes.INTEGER
+    exercisesCompleted: DataTypes.INTEGER,
+    stars: DataTypes.INTEGER,
+    xp: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Progress',
